@@ -1,0 +1,31 @@
+CREATE TABLE baseball.fact_pitch (
+    FactPitchID INT AUTO_INCREMENT PRIMARY KEY,
+    GameKey INT NOT NULL,
+    AtBat INT NOT NULL,
+    PitchNumber INT NOT NULL,
+    BatterKey INT NOT NULL,
+    PitcherKey INT NOT NULL,
+    PitchType VARCHAR(10),
+    ReleaseSpeed DECIMAL(5,2),
+    SpinAxis DECIMAL(6,2),
+    PlateX DECIMAL(6,3),
+    PlateY DECIMAL(6,3),
+    PlateZ DECIMAL(6,3),
+    InitVeloX DECIMAL(6,3),
+    InitVeloY DECIMAL(6,3),
+    InitVeloZ DECIMAL(6,3),
+    AccelX DECIMAL(6,3),
+    AccelY DECIMAL(6,3),
+    AccelZ DECIMAL(6,3),
+    HomeTeamScore INT,
+    AwayTeamScore INT,
+    Balls INT CHECK (Balls BETWEEN 0 AND 3),
+    Strikes INT CHECK (Strikes BETWEEN 0 AND 2),
+    OutsWhenUp INT CHECK (OutsWhenUp BETWEEN 0 AND 2),
+    InsertTime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    
+    -- Adding indexes for efficient lookups
+    INDEX idx_game_atbat_pitch (GameKey, AtBat, PitchNumber),
+    INDEX idx_pitcher (PitcherKey),
+    INDEX idx_batter (BatterKey)
+);

@@ -1,6 +1,12 @@
-CREATE TABLE DimPitcher (
-    PitcherKey INT NOT NULL PRIMARY KEY,  -- Unique Pitcher ID
-    PlayerName VARCHAR(255) NOT NULL, -- Player's name
-    PlayerThrows CHAR(1) NOT NULL, 
-    PlayerAge DECIMAL(4,1) 
+DROP TABLE IF EXISTS baseball.Pitchers;
+
+CREATE TABLE Pitchers (
+    PitcherKey INT PRIMARY KEY,
+    PlayerLastName VARCHAR(50),
+    PlayerFirstName VARCHAR(50),
+    PlayerName VARCHAR(100),
+    PlayerThrows VARCHAR(5),           -- Typically 'R', 'L', or 'S'
+    PlayerAge INT,
+    FirstMLBAppearance INT,
+    LastMLBAppearance INT
 );
